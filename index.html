@@ -7,26 +7,33 @@
     <title>Calcula Material</title>
   </head>
   <body>
-    <form class="form">
+    <form class="form" id="form">
       <div class="form-control">
-        <label for="purga">Purga</label>
-        <input name="purga" type="number" placeholder="informe o peso..." />
+        <label for="select-powder-granulated">Consumo HDPE Powder (kg/m)</label>
+        <select name="select-powder-granulated" id="select-powder-granulated">
+          <option value="powder">Powder</option>
+          <option value="granulated">Granulated</option>
+        </select>
       </div>
       <div class="form-control">
-        <label for="hdpe">HDPE kg/m</label>
-        <input name="hdpe" type="number" placeholder="informe o peso..." />
+        <label for="hdpe-powder">Consumo HDPE Powder (kg/m)</label>
+        <input name="hdpe-powder" id="consumption-hdpe-powder" type="number" placeholder="informe o consumo..." />
       </div>
       <div class="form-control">
-        <label for="invalido">Inválido</label>
-        <input name="invalido" type="number" placeholder="informe a metragem..." />
+        <label for="hdpe-granulated">Consumo HDPE Granulated (kg/m)</label>
+        <input
+          name="hdpe-granulated"
+          id="consumption-hdpe-granulated"
+          type="number"
+          placeholder="informe o consumo..."
+        />
       </div>
       <div class="form-control">
-        <label for="troca-material">Horario de troca de material</label>
-        <input name="troca-material" type="datetime" placeholder="informe a porcentagem..." />
+        <label for="speed-line">Velocidade da linha (m/min)</label>
+        <input name="speed-line" id="speed-line" type="number" placeholder="informe a velocidade..." />
       </div>
-      <div class="form-control">
-        <label for="purga">Peso de purga</label>
-        <input name="purga" type="number" placeholder="informe o peso..." />
+      <div>
+        <h2 id="result-calc"></h2>
       </div>
     </form>
     <script type="module" src="/main.js"></script>
