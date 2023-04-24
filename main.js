@@ -32,36 +32,50 @@ function selecionaMaterial() {
     form.children[1].style.display = "flex";
   }
 }
+function calculaCapacidadeSistema(material) {
+  const capacidadeSistema = 500;
+  const porcentagemPowder = 0.9;
+  const porcentagemGranulated = 0.1;
+
+  if (material === "powder") {
+    let capacidadeSistemaPo = capacidadeSistema * porcentagemPowder;
+    return capacidadeSistemaPo;
+  }
+  if (material === "granulated") {
+    let capacidadeSistemaGranulado = capacidadeSistema * porcentagemGranulated;
+    return capacidadeSistemaGranulado;
+  }
+}
+
+function calculaQuantidadePowderR1R2(r) {
+  let capacidadeSistemaR1 = calculaCapacidadeSistema("powder") / 5;
+  let capacidadeSistemaR2 = calculaCapacidadeSistema("powder") - capacidadeSistemaR1;
+
+  if (r === "r1") {
+    return capacidadeSistemaR1;
+  }
+  if (r === "r2") {
+    return capacidadeSistemaR2;
+  }
+}
 
 function calculaTempoConsumo() {
-  const capacidadeSistema = 300;
-  let capacidadeSistemaPo = 0;
-  let capacidadeSistemaGranulado = 0;
-  let powder = 0.9;
-  let granulated = 0.1;
-  let capacidadeSistemaR1 = 0;
-  let capacidadeSistemaR2 = 0;
-  const quantidadePowderKgMetro = inputConsumptionHdpePowder.innerHTML;
-  const quantidadeGranulatedKgMetro = inputConsumptionHdpeGranulated.innerHTML;
-  const velocidadeLinha = inputSpeedLine.innerHTML;
+  const consumoPowderKgMetro = inputConsumptionHdpePowder.value;
+  const quantidadeGranulatedKgMetro = inputConsumptionHdpeGranulated.value;
+  const velocidadeLinha = inputSpeedLine.value;
   let tempoConsumo = 0;
 
-  capacidadeSistemaPo = capacidadeSistema * powder;
-  capacidadeSistemaR1 = capacidadeSistemaPo / 5;
-  capacidadeSistemaR2 = capacidadeSistema - capacidadeSistemaR1;
-
-  capacidadeSistemaGranulado = capacidadeSistema * granulated;
-
   if (selectPowderGranulated.value === "powder" && selectR1R2.value === "r1") {
-    tempoConsumo = capacidadeSistemaR1 / parseFloat(quantidadePowderKgMetro * velocidadeLinha);
-    console.log(tempoConsumo);
+    tempoConsumo = calculaQuantidadePowderR1R2(selectR1R2.value) / (consumoPowderKgMetro * velocidadeLinha);
+    console.log(`${tempoConsumo} minutos`);
   }
   if (selectPowderGranulated.value === "powder" && selectR1R2.value === "r2") {
-    tempoConsumo = capacidadeSistemaR2 / parseFloat(quantidadePowderKgMetro * velocidadeLinha);
+    tempoConsumo = calculaQuantidadePowderR1R2(selectR1R2.value) / (consumoPowderKgMetro * velocidadeLinha);
     console.log(tempoConsumo);
   }
   if (selectPowderGranulated.value === "granulated") {
-    tempoConsumo = capacidadeSistemaGranulado / parseFloat(quantidadeGranulatedKgMetro * velocidadeLinha);
-    console.log(tempoConsumo);
+    tempoConsumo =
+      calculaCapacidadeSistema(selectPowderGranulated.value) / (quantidadeGranulatedKgMetro * velocidadeLinha);
+    console.log(`${tempoConsumo} minutos`);
   }
 }
