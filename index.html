@@ -24,12 +24,19 @@
       </div>
       <div class="form-control">
         <label for="hdpe-powder">Consumo HDPE Powder (kg/m)</label>
-        <input name="hdpe-powder" id="consumption-hdpe-powder" type="number" placeholder="informe o consumo..." />
+        <input
+          name="hdpe-powder"
+          step="0.1"
+          id="consumption-hdpe-powder"
+          type="number"
+          placeholder="informe o consumo..."
+        />
       </div>
       <div class="form-control granulated">
         <label for="hdpe-granulated">Consumo HDPE Granulated (kg/m)</label>
         <input
           name="hdpe-granulated"
+          step="0.1"
           id="consumption-hdpe-granulated"
           type="number"
           placeholder="informe o consumo..."
@@ -37,10 +44,13 @@
       </div>
       <div class="form-control">
         <label for="speed-line">Velocidade da linha (m/min)</label>
-        <input name="speed-line" id="speed-line" type="number" placeholder="informe a velocidade..." />
+        <input name="speed-line" step="0.1" id="speed-line" type="number" placeholder="informe a velocidade..." />
       </div>
       <div>
         <h2 id="result-calc"></h2>
+      </div>
+      <div class="form-control">
+        <button class="button-calcular" id="button-calcular">Calcular</button>
       </div>
     </form>
     <script type="module" src="/main.js"></script>
