@@ -76,6 +76,6 @@ function calculaTempoConsumo() {
   if (selectPowderGranulated.value === "granulated") {
     tempoConsumo =
       calculaCapacidadeSistema(selectPowderGranulated.value) / (quantidadeGranulatedKgMetro * velocidadeLinha);
-    console.log(`${tempoConsumo} minutos`);
+    console.log(`${tempoConsumo} minutos~`);
   }
 }

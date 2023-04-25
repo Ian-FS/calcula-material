@@ -9,6 +9,7 @@ html {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 10px;
         label {
             margin-right: 10px;
             font-weight: bold;
@@ -20,6 +21,9 @@ html {
             &::placeholder {
                 font-size: 1.2rem;
             }
+        }
+        select {
+            width: 80px;
         }
     }
     .granulated {
